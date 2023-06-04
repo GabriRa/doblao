@@ -1,0 +1,23 @@
+<div class="home">
+  <div class="home-box">
+    <div class="home-parallax">
+      <div
+        class="home-parallax--box"
+        *ngFor="let box of boxParallax; index as i"
+      >
+        <div class="home-parallax--background">
+          <div
+            class="home-parallax--background-img"
+            *ngFor="let img of box.parallaxImg"
+            [style.backgroundImage]="'url(' + img + ')'"
+          ></div>
+        </div>
+        <div class="home-parallax--content">
+          <div class="home-parallax--tittle">
+            {{ box.title }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
