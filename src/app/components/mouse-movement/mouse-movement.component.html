@@ -1,0 +1,20 @@
+<div class="mouse-movement">
+  <div class="mouse-movement-frame" (click)="clickImage($event)">
+    <div
+      class="mouse-movement-img--prev"
+      (click)="changeImage(-1, $event)"
+      *ngIf="!tailEffectActive && fullFrameOpen"
+    ></div>
+    <img
+      class="mouse-movement-img"
+      id="mouse-movement-img-{{ i }}"
+      src="{{ img }}"
+      *ngFor="let img of imgToShow; index as i"
+    />
+    <div
+      class="mouse-movement-img--next"
+      (click)="changeImage(1, $event)"
+      *ngIf="!tailEffectActive && fullFrameOpen"
+    ></div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="bingo-musical bingo-musical-container">
+  <div class="bingo-musical-background">
+    <div class="bingo-musical-background--img"></div>
+    <canvas class="canvas-prueba"></canvas>
+  </div>
+
+  <div class="login" #loginAnimationStart *ngIf="!user">
+    <div class="login-text">
+      <h1 class="login-text--title">Bingo musical</h1>
+      <div class="login-text--subtitle">¿Tienes preparada tu lista?</div>
+      <div class="login-text--connect">Conectatate a spotify y empieza</div>
+    </div>
+    <button class="login-spotify-button button-main" (click)="login()">
+      Conectate a Spotify <i class="fa-brands fa-spotify"></i>
+    </button>
+  </div>
+
+  <div class="bingo-card" *ngIf="bingoCard">
+    <div class="bingo-card-container" #bingoCardElm>
+      <div class="bingo-card-number">
+        {{ counter }}
+      </div>
+      <div class="bingo-card-item" *ngFor="let card of bingoCard">
+        {{ card.track.name }} - {{ card.track.artists[0].name }}
+      </div>
+    </div>
+
+    <div class="bingo-card-download">
+      <button class="button-main" (click)="downlaodBingoCard()">
+        Descargar este carton
+      </button>
+    </div>
+  </div>
+
+  <div class="user" *ngIf="user">
+    <div class="selected-playlist" *ngIf="selectedPlaylist">
+      <div class="selected-playlist-loading" *ngIf="tracksLoading">
+        <i class="fa fa-spinner" aria-hidden="true"></i>
+      </div>
+
+      <div class="selected-playlist--title">Has seleccionado:</div>
+      <div class="selected-playlist--name">
+        {{ selectedPlaylist.name }}
+      </div>
+
+      <div class="selected-playlist--img">
+        <img src="{{ selectedPlaylist.imgUrl }}" alt="" />
+      </div>
+
+      <div class="selected-playlist--buttons">
+        <button class="button-main" (click)="generateBingoCard()">
+          Generar cartón
+        </button>
+
+        <button class="button-main" (click)="refreshPlaylistTracks()">
+          Refrescar playlist
+        </button>
+      </div>
+    </div>
+
+    <div class="user-name">
+      {{ user.display_name }}
+    </div>
+
+    <div class="user-playlist">
+      <div class="user-playlist--title">
+        Elige la playlist con la quieres hacer tu bingo
+      </div>
+      <div class="user-playlist--list">
+        <div
+          class="user-playlist--item"
+          *ngFor="let playlist of userPlaylists; let i = index"
+          (click)="selectPlaylist(playlist)"
+        >
+          <div class="user-playlist--item-img">
+            <img src="{{ playlist.imgUrl }}" alt="" />
+          </div>
+          <div class="user-playlist--item-name">
+            {{ playlist.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-buttons">
+      <button class="button-main" (click)="logout()">Logout</button>
+
+      <button class="button-main" (click)="loadMorePlaylist()">
+        Cargar mas playlist
+      </button>
+    </div>
+  </div>
+</div>

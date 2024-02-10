@@ -1,3 +1,5 @@
+$columns: 3;
+
 .home {
   background: #333;
   width: 100%;
@@ -20,13 +22,17 @@
       align-items: center;
       flex-flow: column;
       position: relative;
-      flex-grow: 1;
-      transition: flex-grow .5s ease;
       cursor: pointer;
       overflow: hidden;
+      width: calc(100% / $columns);
+      transition: width .3s;
 
+      // &:not(:hover) {
+
+      // }
       &:hover {
-        flex-grow: 2;
+        width: 45%;
+
         .home {
           &-parallax {
             &--background {
@@ -64,7 +70,7 @@
     &--background {
       position: absolute;
       height: 100%;
-      width: 100%;
+      width: 45vw;
       animation: photoMove infinite ease-in-out alternate-reverse;
 
       &-img {

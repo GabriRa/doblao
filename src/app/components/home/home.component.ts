@@ -36,5 +36,12 @@ export class HomeComponent {
     },
   ];
 
+  // es mejor ir variando el tiempo de las animaciones
+  // por ejemplo, que el tiempo de la primera animacion pase luego a ser el tiempo de la ultima
+  // O hacer la animacion mucho mas lenta para que se vea guay
+
+  // la animacion puede parar cuando estas en haciedo hover en uno
+  // si el raton va hacia arriba o hacia abjo, que haga scroll en esa dirreccion
+
   constructor() {}
 }
